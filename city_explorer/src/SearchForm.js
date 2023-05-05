@@ -4,7 +4,7 @@ import Alert from 'react-bootstrap/Alert';
 
 
 
-function SearchForm() {
+function SearchForm(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();

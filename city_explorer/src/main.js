@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import Container from 'react-bootstrap'
+import Container from 'react-bootstrap/Container'
 import Map from './Map';
 import SearchForm from './SearchForm';
 import axios from 'axios';
