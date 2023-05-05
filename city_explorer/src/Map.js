@@ -5,8 +5,8 @@ function Map(props) {
     return (
         <Card>
             <Card.Body>
-                <Card.Title>{props.city}</Card.Title>
-                <Card.Img variant="top" alt={props.city} src={props.img_url} />
+                <Card.Title>{props.city.display_name}</Card.Title>
+                <Card.Img variant="top" alt={props.city.display_name} src={props.img_url} />
                 <Card.Text>
                     Located at the coordinates of {props.city.lat}, {props.city.lon}. You're journey awaits!
                 </Card.Text>

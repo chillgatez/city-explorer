@@ -13,8 +13,8 @@ function Main() {
     const [displayMap, setDisplayMap] = useState(false);
     const [displayError, setDisplayError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const updateCity = (e) => {
-        setSearchCity(e.target.value);
+    const updateCity = (event) => {
+        setSearchCity(event.target.value);
     };
 
     let retrieveLocData = async () => {
@@ -24,7 +24,7 @@ function Main() {
         try {
             displayCity = await axios.get(API)
             setDisplayCity(displayCity.data[0]);
-            console.log(displayCity.data[0])
+            console.log(displayCity.data[0]);
             setDisplayMap(true);
             setDisplayError(false);
         } catch (error) {
