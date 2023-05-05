@@ -18,7 +18,7 @@ function Main() {
     };
 
     let retrieveLocData = async () => {
-        const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_ENV_VARIABLE}&q=${searchCity}&format=json`;
+        const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_KEY}&q=${searchCity}&format=json`;
 
         let displayCity;
         try {
@@ -47,7 +47,7 @@ function Main() {
             {displayMap &&
                 <div>
                     <Map
-                        img_url={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_MAP_KEY}&center=${displayCity.lat},${displayCity.lon}&size=600x300&format=jpg&zoom=6`}
+                        img_url={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${displayCity.lat},${displayCity.lon}&size=600x300&format=jpg&zoom=6`}
                         city={displayCity}
                     />
                     <p>Located at the coordinates of {displayCity.lat}, {displayCity.lon}.</p>
