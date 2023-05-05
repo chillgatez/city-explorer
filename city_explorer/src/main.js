@@ -51,7 +51,7 @@ function Main() {
                         city={displayCity}
                     />
                     <p>Located at the coordinates of {displayCity.lat}, {displayCity.lon}.</p>
-                    <p>You're journey awaits!</p>
+                    <p>You're journey awaits! </p>
                 </div>
             }
         </Container>
