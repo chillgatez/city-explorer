@@ -12,7 +12,7 @@ Create repo for project
 Create react app within repo
 Install axios and bootsrap packages
 Deploy to Netlify
-
+https://magenta-shortbread-cc8f93.netlify.app/
 
 
 ## Architecture
