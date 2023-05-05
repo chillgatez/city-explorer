@@ -23,7 +23,8 @@ function Main() {
         let displayCity;
         try {
             displayCity = await axios.get(API)
-            setDisplayCity(displayCity.data[0].display_name);
+            setDisplayCity(displayCity.data[0]);
+            console.log(displayCity.data[0])
             setDisplayMap(true);
             setDisplayError(false);
         } catch (error) {
