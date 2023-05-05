@@ -1,12 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
 
 function App() {
   return (
     <div>
-      <header>
-
-      </header>
+      <Header />
+      <Main />
+      <Footer />
     </div>
   );
 }
