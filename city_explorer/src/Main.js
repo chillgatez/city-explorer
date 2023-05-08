@@ -38,7 +38,7 @@ function Main() {
     return (
 
         <Container>
-            <h2>Ready to Explore {displayCity}</h2>
+            <h2>Ready to Explore {displayCity.display_name}!</h2>
             <SearchForm
                 updateCity={updateCity}
                 retrieveLocData={retrieveLocData}
