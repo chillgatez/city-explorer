@@ -18,13 +18,13 @@ function Main() {
     };
 
     let retrieveLocData = async () => {
-        const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_API_KEY}&q=${searchCity}&format=json`;
+        const API = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_API_KEY}&q=${searchCity}&format=json`;
 
-        let displayCity;
+        let response;
         try {
-            displayCity = await axios.get(API)
-            setDisplayCity(displayCity.data[0]);
-            console.log(displayCity.data[0]);
+            response = await axios.get(API)
+            setDisplayCity(response.data[0]);
+            console.log(response.data[0]);
             setDisplayMap(true);
             setDisplayError(false);
         } catch (error) {
