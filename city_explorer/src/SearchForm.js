@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
@@ -9,7 +10,7 @@ function SearchForm(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         props.retrieveLocData();
-        
+
     }
 
     return (

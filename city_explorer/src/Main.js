@@ -13,6 +13,7 @@ function Main() {
     const [displayMap, setDisplayMap] = useState(false);
     const [displayError, setDisplayError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [displayForecast, setDisplayForecast] = useState(false);
     const updateCity = (event) => {
         setSearchCity(event.target.value);
     };
@@ -38,7 +39,7 @@ function Main() {
     return (
 
         <Container>
-            <h2>Ready to Explore {displayCity.display_name}!</h2>
+            <h2>Ready to Explore?</h2>
             <SearchForm
                 updateCity={updateCity}
                 retrieveLocData={retrieveLocData}
@@ -51,8 +52,7 @@ function Main() {
                         img_url={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${displayCity.lat},${displayCity.lon}&size=600x300&format=jpg&zoom=6`}
                         city={displayCity}
                     />
-                    <p>Located at the coordinates of {displayCity.lat}, {displayCity.lon}.</p>
-                    <p>You're journey awaits! </p>
+                    <h3>You're journey awaits! </h3>
                 </div>
             }
         </Container>
