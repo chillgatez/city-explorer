@@ -1,29 +1,56 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container'
 import Map from './Map';
 import SearchForm from './SearchForm';
+import Weather from './Weather';
 import axios from 'axios';
 
 
 
 function Main() {
+
+    //state variables
     const [searchCity, setSearchCity] = useState('');
     const [displayCity, setDisplayCity] = useState('');
     const [displayMap, setDisplayMap] = useState(false);
     const [displayError, setDisplayError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [displayForecast, setDisplayForecast] = useState(false);
+    const [forecastData, setForecastData] = useState([])
+
+    //updates searchCity state on input change
     const updateCity = (event) => {
         setSearchCity(event.target.value);
     };
 
-    let retrieveLocData = async () => {
-        const API = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_API_KEY}&q=${searchCity}&format=json`;
+    useEffect(() => {
+        //retrieve waether data when displayCity changes
+        const retrieveWeatherData = async () => {
 
-        let response;
+            const weatherAPI = `http://localhost:3001/weather?lat=${displayCity.lat}&lon=${displayCity.lon}&${displayCity}`;
+
+            if (displayCity) {
+                try {
+                    const response = await axios.get(weatherAPI);
+                    setForecastData(response.data);
+                    setDisplayForecast(true);
+                } catch (error) {
+                    setDisplayForecast(false);
+                    console.error(error);
+                }
+            }
+        };
+
+        retrieveWeatherData();
+    }, [displayCity]);
+
+    // retrieve location data from locationIQ API
+    let retrieveLocData = async () => {
+        const locationAPI = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_API_KEY}&q=${searchCity}&format=json`;
+
         try {
-            response = await axios.get(API)
+            const response = await axios.get(locationAPI)
             setDisplayCity(response.data[0]);
             console.log(response.data[0]);
             setDisplayMap(true);
@@ -36,6 +63,7 @@ function Main() {
 
     }
 
+    //render 
     return (
 
         <Container>
@@ -46,7 +74,7 @@ function Main() {
                 hasError={displayError}
                 errorMessage={errorMessage}
             />
-            {displayMap &&
+            {displayMap && (
                 <div>
                     <Map
                         img_url={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${displayCity.lat},${displayCity.lon}&size=600x300&format=jpg&zoom=6`}
@@ -54,7 +82,8 @@ function Main() {
                     />
                     <h3>You're journey awaits! </h3>
                 </div>
-            }
+            )}
+            {displayForecast && <Weather forecastData={forecastData} />}
         </Container>
     )
 
