@@ -14,22 +14,25 @@ function SearchForm(props) {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Group>
-                <Form.Label>Choose your Destination</Form.Label>
-                <Form.Control type="text" placeholder="Enter a city" onChange={props.updateCity} />
-            </Form.Group>
-            {props.hasError &&
-                <div>
-                    <Alert variant="danger">
-                        <strong className="mr-auto">Error {' '}</strong>
-                        {props.errorMessage}, please try another search.
-                    </Alert>
-                </div>
-            }
-            <Button variant="primary" type="submit">Explore!</Button>
-        </Form>
 
+        <div>
+            <h2>Ready to Explore?</h2>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Label>Choose your Destination</Form.Label>
+                    <Form.Control type="text" placeholder="Enter a city" onChange={props.updateCity} />
+                </Form.Group>
+                {props.hasError &&
+                    <div>
+                        <Alert variant="danger">
+                            <strong className="mr-auto">Error {' '}</strong>
+                            {props.errorMessage}, please try another search.
+                        </Alert>
+                    </div>
+                }
+                <Button variant="primary" type="submit">Explore!</Button>
+            </Form>
+        </div>
     );
 }
 

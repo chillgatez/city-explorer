@@ -1,21 +1,20 @@
 import React from 'react';
 
-function Weather({forecastData}) {
+function Weather(props) {
+
 
   return (
-    <div>
-      <h3>Weather Forecast</h3>
-      {forecastData.map((forecast, index) => (
-        <div key={index}>
-          <h4>{forecast.date}</h4>
-          <p>Description: {forecast.description}</p>
-          <p>Longitude: {forecast.lon}</p>
-          <p>Latitude: {forecast.lat}</p>
-          <p>City: {forecast.city_name}</p>
-        </div>
-      ))}
-    </div>
-  );
+
+    <> {props.forecastData.map((value) => {
+        return (
+          <div>
+          <h3>Forecast for {value.date}</h3>
+          <p>Low of {value.low}, high of {value.high} with {value.description}</p>
+          </div>
+        )
+      })
+    } </>
+  )
 }
 
 export default Weather;
