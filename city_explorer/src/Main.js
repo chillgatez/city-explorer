@@ -45,7 +45,7 @@ function Main() {
 
     // Retrieve weather data from the server
     const retrieveWeatherData = async (lat, lon) => {
-        const weatherAPI = `http://localhost:3001/weather?lat=${lat}&lon=${lon}&searchQuery=${searchCity}`;
+        const weatherAPI = `http://localhost:3001/weather?${searchCity}`;
 
         try {
             const response = await axios.get(weatherAPI);
