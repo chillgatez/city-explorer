@@ -83,7 +83,7 @@ function Main() {
     useEffect(() => {
         if (cityData !== "" || undefined) {
             retrieveWeatherData(cityData.lat, cityData.lon);
-            retrieveMovieData();
+            retrieveMovieData(cityData);
         }
     }, [cityData]);
 
