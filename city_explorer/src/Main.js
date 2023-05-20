@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Map from './Map';
 import SearchForm from './SearchForm';
 import Weather from './Weather';
+import Movies from './Movies';
 import axios from 'axios';
 
 
