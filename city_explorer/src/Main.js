@@ -19,6 +19,9 @@ function Main() {
     const [displayForecast, setDisplayForecast] = useState(false);
     const [forecastData, setForecastData] = useState([])
 
+    //server url
+    const cityServer = 'https://city-explorer-api-iixi.onrender.com';
+
     //updates searchCity state on input change
     const updateCity = (event) => {
         setSearchCity(event.target.value);
@@ -45,7 +48,7 @@ function Main() {
 
     // Retrieve weather data from the server
     const retrieveWeatherData = async (lat, lon) => {
-        const weatherAPI = `http://localhost:3001/weather?${searchCity}`;
+        const weatherAPI = `${cityServer}/weather?${searchCity}`;
 
         try {
             const response = await axios.get(weatherAPI);
