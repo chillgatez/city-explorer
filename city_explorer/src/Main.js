@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Map from './Map';
 import SearchForm from './SearchForm';
 import Weather from './Weather';
+import Movies from './Movies';
 import axios from 'axios';
 
 
@@ -18,6 +19,11 @@ function Main() {
     const [errorMessage, setErrorMessage] = useState('');
     const [displayForecast, setDisplayForecast] = useState(false);
     const [forecastData, setForecastData] = useState([])
+    const [displayMovie, setDisplayMovie] = useState(false);
+    const [movieData, setMovieData] = useState([])
+
+    //server url
+    const cityServer = 'https://city-explorer-api-iixi.onrender.com';
 
     //updates searchCity state on input change
     const updateCity = (event) => {
@@ -43,9 +49,25 @@ function Main() {
 
     }
 
+
+    // Retrieve movie data from the server
+    const retrieveMovieData = async () => {
+        const movieAPI = `${cityServer}/movies?searchQuery=${searchCity}`;
+
+        try {
+            const response = await axios.get(movieAPI);
+            console.log(response.data);
+            setMovieData(response.data);
+            setDisplayMovie(true);
+        } catch (error) {
+            setDisplayMovie(false);
+            setErrorMessage(error.response.status + ': ' + error.response.data.error);
+        }
+    };
+
     // Retrieve weather data from the server
     const retrieveWeatherData = async (lat, lon) => {
-        const weatherAPI = `http://localhost:3001/weather?lat=${lat}&lon=${lon}&searchQuery=${searchCity}`;
+        const weatherAPI = `${cityServer}/weather?lat=${cityData.lat}&lon=${cityData.lon}`;
 
         try {
             const response = await axios.get(weatherAPI);
@@ -59,8 +81,9 @@ function Main() {
     };
 
     useEffect(() => {
-        if (cityData) {
+        if (cityData !== "" || undefined) {
             retrieveWeatherData(cityData.lat, cityData.lon);
+            retrieveMovieData(cityData);
         }
     }, [cityData]);
 
@@ -89,6 +112,12 @@ function Main() {
                         <Weather forecastData={forecastData} />
                     </div>
                 )}
+                {displayMovie && (
+                    <div>
+                        <Movies movieData={movieData} />
+                    </div>
+                )}
+
             </Container>
         </div>
     )
