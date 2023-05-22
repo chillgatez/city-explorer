@@ -24,7 +24,7 @@ function Map(props) {
                     style={{ display: props.img_url, height: "400px", width: "550x" }} scrollWheelZoom={false}>
 
                     <TileLayer
-                        url='https://{s}-tiles.locationiq.com/v3/streets/r/{z}/{x}/{y}.png?pk.10e8ec4cc55149fb4eabca0693b41639'
+                        url='https://{s}-tiles.locationiq.com/v3/streets/r/{z}/{x}/{y}.png?key=pk.10e8ec4cc55149fb4eabca0693b41639'
                         attribution='&copy; <a href="https://www.locationiq.com/">LocationIQ</a> contributors' />
 
                     <Marker
