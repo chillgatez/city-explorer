@@ -6,6 +6,7 @@ import SearchForm from './SearchForm';
 import Weather from './Weather';
 import Movies from './Movies';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 

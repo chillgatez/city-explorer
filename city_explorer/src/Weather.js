@@ -1,18 +1,18 @@
 import React from 'react';
+import WeatherDay from './WeatherDay';
 
 function Weather(props) {
 
 
   return (
 
-    <> {props.forecastData.map((value) => {
-      return (
-        <div>
-          <h3>Forecast for {value.date}</h3>
-          <p>{value.description}</p>
-        </div>
-
-      )
+    <>
+    {props.forecastData.map((value) => {
+      <WeatherDay
+          key={value.date}
+          date={value.date}
+          description={value.description}
+        />
     })
     } </>
   )
