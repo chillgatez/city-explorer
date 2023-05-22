@@ -20,7 +20,7 @@ function Map(props) {
                 <MapContainer
 
                     center={[props.city.lat, props.city.lon]}
-                    zoom={14}
+                    zoom={12}
                     style={{ display: props.img_url, height: "400px", width: "550x" }} scrollWheelZoom={false}>
 
                     <TileLayer
@@ -39,7 +39,6 @@ function Map(props) {
 
             <Card.Body>
                 <Card.Title>{props.city.display_name}</Card.Title>
-                <Card.Img variant="top" alt={props.city.display_name} src={props.img_url} />
                 <Card.Text>
                     Located at the coordinates of {props.city.lat}, {props.city.lon}.
                 </Card.Text>
