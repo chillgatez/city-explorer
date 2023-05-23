@@ -56,7 +56,11 @@ function Main() {
         const movieAPI = `${cityServer}/movies?searchQuery=${searchCity}`;
 
         try {
-            const response = await axios.get(movieAPI);
+            const response = await axios.get(movieAPI, {
+                headers: {
+                    Authorization: `Bearer ${process.env.RENDER_APP_API_KEY}`
+                }
+            });
             console.log(response.data);
             setMovieData(response.data);
             setDisplayMovie(true);
@@ -71,7 +75,11 @@ function Main() {
         const weatherAPI = `${cityServer}/weather?lat=${cityData.lat}&lon=${cityData.lon}`;
 
         try {
-            const response = await axios.get(weatherAPI);
+            const response = await axios.get(weatherAPI, {
+                headers: {
+                    Authorization: `Bearer ${process.env.RENDER_APP_API_KEY}`
+                }
+            });
             console.log(response.data);
             setForecastData(response.data);
             setDisplayForecast(true);
