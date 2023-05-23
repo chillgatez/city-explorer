@@ -58,6 +58,7 @@ function Main() {
         try {
             const response = await axios.get(movieAPI, {
                 headers: {
+                    Accept: 'application/json',
                     Authorization: `Bearer ${process.env.RENDER_APP_API_KEY}`
                 }
             });
@@ -77,6 +78,7 @@ function Main() {
         try {
             const response = await axios.get(weatherAPI, {
                 headers: {
+                    Accept: 'application/json',
                     Authorization: `Bearer ${process.env.RENDER_APP_API_KEY}`
                 }
             });
