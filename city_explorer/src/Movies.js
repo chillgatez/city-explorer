@@ -7,9 +7,9 @@ function Movies(props) {
     return (
 
         <Carousel>
-            {props.movieData.map((value) => (
+            {props.movieData.map((value, idx) => (
                 <Movie
-                    key={value.title}
+                    key={idx}
                     imageUrl={value.image_url}
                     title={value.title}
                     releasedOn={value.released_on}
